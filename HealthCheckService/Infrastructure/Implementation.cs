@@ -21,7 +21,7 @@ public class Implementation : IImplementation
         var period = 1080000;
 
         var timer = new Timer(period);
-
+        _logger.LogInformation("Start checking with peroid {0} ms", period);
         await _currencyHandle.Check(this, EventArgs.Empty as ElapsedEventArgs);
 
         timer.Elapsed += async (s, e) => await _currencyHandle.Check(s, e);

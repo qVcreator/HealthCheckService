@@ -24,7 +24,9 @@ public class HealthChecker : IHealthChecker
     {
         foreach(var service in _servicesToCheck)
         {
-            await _httpClient.GetStringAsync(service);
+            _logger.LogInformation("check {0}", service);
+            var status = await _httpClient.GetStringAsync(service);
+            _logger.LogInformation(status);
         }
     }
 }
